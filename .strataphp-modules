@@ -1,13 +1,14 @@
-modules/Admin
-modules/api
-modules/Contact
-modules/cookiebanner
-modules/GoogleAnalytics
-modules/HelloWorld
-modules/home
-modules/Links
-modules/Media
-modules/OauthClints
-modules/StrataCms
-modules/User
-
+{
+  "modules/Admin": "modules/Admin/index.php",
+  "modules/api": "modules/api/index.php",
+  "modules/Contact": "modules/Contact/index.php",
+  "modules/cookiebanner": "modules/cookiebanner/index.php",
+  "modules/GoogleAnalytics": "modules/GoogleAnalytics/index.php",
+  "modules/HelloWorld": "modules/HelloWorld/index.php",
+  "modules/home": "modules/home/index.php",
+  "modules/Links": "modules/Links/index.php",
+  "modules/Media": "modules/Media/index.php",
+  "modules/OauthClints": "modules/OauthClints/index.php",
+  "modules/StrataCms": "modules/StrataCms/index.php",
+  "modules/User": "modules/User/index.php"
+}
