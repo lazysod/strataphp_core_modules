@@ -1,0 +1,11 @@
+{
+  "slug": "oauth-clients",
+  "name": "OAuth Clients",
+  "description": "Modular OAuth/SSO provider integration for StrataPHP.",
+  "version": "1.0.0",
+  "homepage": "https://strataphp.org",
+  "repository": "https://github.com/lazysod/strataphp-public",
+  "support_url": "https://strataphp.org/contact/",
+  "required": ["controllers", "views", "models"],
+  "recommended": ["README.md", "CHANGELOG.md"]
+}

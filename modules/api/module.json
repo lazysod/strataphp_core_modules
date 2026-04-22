@@ -1,0 +1,19 @@
+{
+    "name": "api",
+    "version": "1.0.0"
+}
+        "database_queries": 0,
+        "external_requests": false
+    },
+    
+    "security": {
+        "input_validation": true,
+        "output_sanitization": true,
+        "csrf_protection": false,
+        "authentication": false,
+        "authorization": false
+    },
+    
+    "created_at": "2024-01-01T00:00:00Z",
+    "updated_at": "2024-01-01T00:00:00Z"
+}

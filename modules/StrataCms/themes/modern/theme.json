@@ -1,0 +1,30 @@
+{
+  "name": "Modern CMS Theme",
+  "author": "StrataPHP Team",
+  "version": "2.0.0",
+  "description": "Clean, modern design with responsive layout for CMS content pages. Strict Bootstrap 5 usage.",
+  "type": "cms",
+  "templates": ["default", "full-width", "sidebar"],
+  "supports": ["responsive", "seo", "social-media"],
+  "styles": {
+    "primary_color": "#3498db",
+    "secondary_color": "#2c3e50", 
+    "accent_color": "#e74c3c",
+    "font_family": "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif"
+  },
+  "assets": {
+    "css": [
+      "assets/css/theme.css"
+    ],
+    "js": [
+      "assets/js/theme.js"
+    ]
+  },
+  "features": [
+    "Social media optimization",
+    "SEO-friendly markup", 
+    "Multiple layout options",
+    "Responsive design",
+    "Print-friendly styles"
+  ]
+}
