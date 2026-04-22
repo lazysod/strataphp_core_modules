@@ -8,7 +8,7 @@
   "modules/home": "modules/home/index.php",
   "modules/Links": "modules/Links/index.php",
   "modules/Media": "modules/Media/index.php",
-  "modules/OauthClints": "modules/OauthClints/index.php",
+  "modules/OAuthClients": "modules/OauthClints/index.php",
   "modules/StrataCms": "modules/StrataCms/index.php",
   "modules/User": "modules/User/index.php"
 }
