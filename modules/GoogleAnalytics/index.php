@@ -11,6 +11,7 @@ return [
     'homepage' => 'https://github.com/strataphp/google_analytics-module',
     'repository' => 'https://github.com/strataphp/google_analytics-module.git',
     'support_url' => 'https://github.com/strataphp/google_analytics-module/issues',
+    'update' => true,
     'update_url' => '', // Optional: URL to check for updates
     'enabled' => true,
     'suitable_as_default' => false,

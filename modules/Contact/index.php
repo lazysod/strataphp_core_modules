@@ -14,4 +14,5 @@ return [
     'homepage' => 'https://strataphp.org',
     'license' => 'MIT',
     'support_url' => 'https://strataphp.org/contact',
+    'update' => true
 ];

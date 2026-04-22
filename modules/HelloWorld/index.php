@@ -11,6 +11,7 @@ return [
     'repository' => 'https://github.com/lazysod/strataphp-public',
     'homepage' => 'https://github.com/lazysod/strataphp-public',
     'support_url' => 'https://github.com/lazysod/strataphp-public/issues',
+    'update' => true,
     'structure_requirements' => [
         'controllers' => false,  // Simple demo module doesn't need complex structure
         'views' => true,

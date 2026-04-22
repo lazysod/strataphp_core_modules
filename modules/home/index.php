@@ -12,6 +12,7 @@ return [
     'repository' => 'https://github.com/lazysod/strataphp-public',
     'homepage' => 'https://github.com/lazysod/strataphp-public',
     'support_url' => 'https://github.com/lazysod/strataphp-public/issues',
+    'update' => true,
     'structure_requirements' => [
         'controllers' => false, // Simple module, no complex controllers needed
         'views' => false,       // Uses framework default views

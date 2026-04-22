@@ -12,6 +12,7 @@ return [
     'homepage' => 'https://strataphp.org',
     'repository' => 'https://github.com/lazysod/strataphp-public',
     'support_url' => 'https://strataphp.org',
+    'update' => true,
     'enabled' => false,
     'suitable_as_default' => false,
     'dependencies' => [],
