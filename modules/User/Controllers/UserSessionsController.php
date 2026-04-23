@@ -57,14 +57,14 @@ class UserSessionsController
                 header('Location: /user/login');
                 exit;
             }
-            // Get latest active session per device
-            $latestSessions = $db->fetchAll("SELECT * FROM user_sessions WHERE user_id = ? AND revoked = 0 AND id IN (SELECT MAX(id) FROM user_sessions WHERE user_id = ? AND revoked = 0 GROUP BY device_id)", [$user_id, $user_id]);
+            // Get latest active session per device, not expired
+            $latestSessions = $db->fetchAll("SELECT * FROM user_sessions WHERE user_id = ? AND revoked = 0 AND (expires_at IS NULL OR expires_at > NOW()) AND id IN (SELECT MAX(id) FROM user_sessions WHERE user_id = ? AND revoked = 0 AND (expires_at IS NULL OR expires_at > NOW()) GROUP BY device_id)", [$user_id, $user_id]);
 
             // Always include the current session, even if not the latest for its device
             $currentSessionId = $_SESSION[$sessionPrefix . 'session_id'] ?? null;
             $currentSession = null;
             if ($currentSessionId) {
-                $currentSession = $db->fetch("SELECT * FROM user_sessions WHERE id = ? AND user_id = ? AND revoked = 0", [$currentSessionId, $user_id]);
+                $currentSession = $db->fetch("SELECT * FROM user_sessions WHERE id = ? AND user_id = ? AND revoked = 0 AND (expires_at IS NULL OR expires_at > NOW())", [$currentSessionId, $user_id]);
             }
             $sessions = $latestSessions;
             if ($currentSession && !in_array($currentSession['id'], array_column($latestSessions, 'id'))) {
@@ -158,7 +158,7 @@ class UserSessionsController
             exit;
         }
         $this_user = $_SESSION[$sessionPrefix . 'user_id'] ?? null;
-        $sql = "SELECT us.*, u.display_name, u.first_name, u.second_name, u.email FROM user_sessions us JOIN users u ON us.user_id = u.id WHERE us.revoked = 0 AND us.user_id != ? ORDER BY us.last_seen DESC";
+        $sql = "SELECT us.*, u.display_name, u.first_name, u.second_name, u.email FROM user_sessions us JOIN users u ON us.user_id = u.id WHERE us.revoked = 0 AND (us.expires_at IS NULL OR us.expires_at > NOW()) AND us.user_id != ? ORDER BY us.last_seen DESC";
         $sessions = $db->fetchAll($sql, [$this_user]);
         include __DIR__ . '/../views/admin_sessions.php';
     }

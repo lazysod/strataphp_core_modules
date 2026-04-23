@@ -17,12 +17,8 @@ if (!empty(App::config('modules')['User'])) {
     if (!empty(App::config('default_module')) && App::config('default_module') === 'user') {
         $router->get('/', [UserLoginController::class, 'index']);
     }
-    // $router->get('/user/profile_settings', [\App\Modules\User\Controllers\UserProfileSettingsController::class, 'index']);
-    // $router->post('/user/profile_settings', [\App\Modules\User\Controllers\UserProfileSettingsController::class, 'index']);
     $router->get('/user/login', [UserLoginController::class, 'index']);
     // $router->get('/user/dashboard', [\App\Modules\User\Controllers\UserDashboardController::class, 'index']); // Will show new dashboard menu
-    // $router->get('/dashboard', [\App\Modules\User\Controllers\UserDashboardController::class, 'index']); // Will show new dashboard menu
-    // $router->get('/user/links', [\App\Modules\User\Controllers\UserLinksController::class, 'index']); // Old dashboard view now at /user/links
     $router->post('/user/login', [UserLoginController::class, 'index']);
     $router->get('/user/register', [\App\Modules\User\Controllers\UserRegisterController::class, 'index']);
     $router->post('/user/register', [\App\Modules\User\Controllers\UserRegisterController::class, 'index']);

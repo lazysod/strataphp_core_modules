@@ -34,13 +34,13 @@ class AdminSessionsController
                 header('Location: /admin/login');
                 exit;
             }
-            // Get all active sessions for non-admin users
-            $sql = "SELECT us.*, u.display_name, u.email FROM user_sessions us JOIN users u ON us.user_id = u.id WHERE u.is_admin = 0 AND us.revoked = 0 ORDER BY us.last_seen DESC";
-            $sessions = $db->fetchAll($sql);
+            // Get all active sessions for this admin user
+            $sql = "SELECT us.*, u.display_name, u.email FROM user_sessions us JOIN users u ON us.user_id = u.id WHERE u.id = ? AND us.revoked = 0 AND (us.expires_at IS NULL OR us.expires_at > NOW()) ORDER BY us.last_seen DESC";
+            $sessions = $db->fetchAll($sql, [$admin_id]);
             $debug_sql = $sql;
             $debug_sessions = $sessions;
             extract(['debug_sql' => $debug_sql, 'debug_sessions' => $debug_sessions, 'sessions' => $sessions]);
-            // include __DIR__ . '/../views/sessions.php';
+            include __DIR__ . '/../views/sessions.php';
         } catch (\Exception $e) {
             http_response_code(500);
             echo '<h1>Error loading sessions</h1>';
