@@ -18,7 +18,7 @@ return [
     'dependencies' => [],
     'permissions' => [],
     'requirements' => [
-        'php' => '>=7.4'
+        'php' => '>=8.2'
     ],
     'tags' => ['cookie', 'consent', 'privacy', 'banner'],
     'features' => [

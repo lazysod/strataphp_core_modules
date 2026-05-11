@@ -18,7 +18,7 @@ return [
     'dependencies' => [], // Other modules this depends on
     'permissions' => ['google-analytics.create', 'google-analytics.read', 'google-analytics.update', 'google-analytics.delete'], // Required permissions
     'requirements' => [
-        'php' => '>=7.4',
+        'php' => '>=8.2',
         'mysql' => '>=5.7'
     ],
     'tags' => ['google-analytics', 'content', 'cms', 'crud'],

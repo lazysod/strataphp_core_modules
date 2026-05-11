@@ -26,7 +26,7 @@ return [
         'cms.admin', 'cms.settings'
     ],
     'requirements' => [
-        'php' => '>=7.4',
+        'php' => '>=8.2',
         'mysql' => '>=5.7'
     ],
     'features' => [

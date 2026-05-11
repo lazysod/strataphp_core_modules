@@ -14,8 +14,8 @@ return [
     'update' => true,
     'structure_requirements' => [
         'controllers' => true,
-        'views' => true,
-        'models' => false  // API module doesn't need models - it's for endpoints only
+        'models' => true,
+        'views' => false
     ],
     'update_url' => '',
     'enabled' => true

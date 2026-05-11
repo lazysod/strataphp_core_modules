@@ -14,7 +14,7 @@ class ModuleDetailsController
     {
         // Ensure session is started
         if (session_status() === PHP_SESSION_NONE) {
-            session_name('PHPSESSID');
+
             session_set_cookie_params([
                 'path' => '/',
                 'httponly' => true,

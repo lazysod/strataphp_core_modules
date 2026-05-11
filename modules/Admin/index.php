@@ -32,7 +32,7 @@ return [
     ],
     'enabled' => true,
     'dependencies' => [
-        'php' => '>=8.0',
+        'php' => '>=8.2',
         'strataphp' => '>=1.0.0'
     ],
     'routes' => [

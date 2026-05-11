@@ -1,6 +1,6 @@
 <?php
 namespace App\Modules\Admin\Controllers;
-
+use App\Logger;
 /**
  * Admin Sessions Controller
  *
@@ -29,8 +29,18 @@ class AdminSessionsController
             global $config;
             $sessionPrefix = $config['session_prefix'] ?? ($config['prefix'] ?? 'app_');
             $db = new \App\DB($config);
+            $logger = new Logger($config);
+            $logger->info('ADMIN SESSIONS INDEX', [
+                'session_name' => session_name(),
+                'session_id' => session_id(),
+                'SESSION' => $_SESSION,
+                'COOKIES' => $_COOKIE
+            ]);
             $admin_id = $_SESSION[$sessionPrefix . 'admin'] ?? null;
             if (!$admin_id) {
+                $logger->warning('ADMIN SESSIONS INDEX: Not logged in, redirecting.', [
+                    'SESSION' => $_SESSION
+                ]);
                 header('Location: /admin/login');
                 exit;
             }
@@ -39,7 +49,7 @@ class AdminSessionsController
             $sessions = $db->fetchAll($sql, [$admin_id]);
             $debug_sql = $sql;
             $debug_sessions = $sessions;
-            extract(['debug_sql' => $debug_sql, 'debug_sessions' => $debug_sessions, 'sessions' => $sessions]);
+            // extract(['debug_sql' => $debug_sql, 'debug_sessions' => $debug_sessions, 'sessions' => $sessions]);
             include __DIR__ . '/../views/sessions.php';
         } catch (\Exception $e) {
             http_response_code(500);
@@ -66,9 +76,19 @@ class AdminSessionsController
             global $config;
             $sessionPrefix = $config['session_prefix'] ?? ($config['prefix'] ?? 'app_');
             $db = new \App\DB($config);
+            $logger = new Logger($config);
+            $logger->info('ADMIN SESSIONS REVOKE', [
+                'session_name' => session_name(),
+                'session_id' => session_id(),
+                'SESSION' => $_SESSION,
+                'COOKIES' => $_COOKIE
+            ]);
             $admin_id = $_SESSION[$sessionPrefix . 'admin'] ?? null;
             $session_id = $_POST['session_id'] ?? null;
             if (!$admin_id || !$session_id) {
+                $logger->warning('ADMIN SESSIONS REVOKE: Not logged in or missing session_id, redirecting.', [
+                    'SESSION' => $_SESSION
+                ]);
                 header('Location: /admin/sessions');
                 exit;
             }
@@ -102,10 +122,20 @@ class AdminSessionsController
             global $config;
             $sessionPrefix = $config['session_prefix'] ?? ($config['prefix'] ?? 'app_');
             $db = new \App\DB($config);
+            $logger = new Logger($config);
+            $logger->info('ADMIN SESSIONS UPDATEDEVICE', [
+                'session_name' => session_name(),
+                'session_id' => session_id(),
+                'SESSION' => $_SESSION,
+                'COOKIES' => $_COOKIE
+            ]);
             $admin_id = $_SESSION[$sessionPrefix . 'admin'] ?? null;
             $session_id = $_POST['session_id'] ?? null;
             $device_info = trim($_POST['device_info'] ?? '');
             if (!$admin_id || !$session_id || $device_info === '') {
+                $logger->warning('ADMIN SESSIONS UPDATEDEVICE: Not logged in, missing session_id or device_info, redirecting.', [
+                    'SESSION' => $_SESSION
+                ]);
                 header('Location: /admin/sessions');
                 exit;
             }

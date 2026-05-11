@@ -8,6 +8,7 @@ class OAuthTokenController
     protected $db;
     public function __construct()
     {
+        $code_verifier = $_POST['code_verifier'] ?? null;
         $config = require dirname(__DIR__, 3) . '/app/config.php';
         $this->db = new DB($config);
     }

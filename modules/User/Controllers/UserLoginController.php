@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Modules\User\Controllers;
 
 use App\TokenManager;
@@ -27,6 +28,7 @@ class UserLoginController
      */
     public function index()
     {
+        error_log('LOGIN CONTROLLER: HIT ' . $_SERVER['REQUEST_METHOD']);
         try {
             require_once dirname(__DIR__, 3) . '/bootstrap.php';
             $config = require dirname(__DIR__, 3) . '/app/config.php';
@@ -49,7 +51,7 @@ class UserLoginController
                     header('Location: ' . $redirect);
                     exit;
                 }
-                header('Location: /dashboard');
+                header('Location: /');
                 exit;
             }
             $error = '';
@@ -89,6 +91,8 @@ class UserLoginController
                             header('Location: ' . $redirect);
                             exit;
                         }
+                        error_log('LOGIN SUCCESS: app_user_id=' . ($_SESSION[$sessionPrefix . 'user_id'] ?? 'NOT_SET'));
+                        error_log('LOGIN SUCCESS: about to redirect');
                         header('Location: /');
                         exit;
                     } else {

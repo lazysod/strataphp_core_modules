@@ -6,10 +6,10 @@ use App\App;
 // App::dump($_SESSION, 'Current User Data');
 
 // Robust check: If no profiles, block access and show warning
-if (empty($profile_list) || !is_array($profile_list) || count(array_filter($profile_list)) === 0) {
-    header('Location: /user/dashboard');
-    exit;
-}
+// if (empty($profile_list) || !is_array($profile_list) || count(array_filter($profile_list)) === 0) {
+//     header('Location: /us');
+//     exit;
+// }
 ?>
 
 <section class="py-5">
